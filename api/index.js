@@ -9,14 +9,18 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require('cors');
 
 
 
-dotenv.config();
+dotenv.config(); 
+
+
+app.use(cors());
 app.use(express.json());
 app.use("/images",express.static(path.join(__dirname,"/images")))
 
-mongoose.connect("mongodb://localhost:27017/blog").then(console.log("Connected to monogodb")).catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URL).then(console.log("Connected to monogodb")).catch((err) => console.log(err));
 
 const storage = multer.diskStorage({
     destination: (req,file,cb)=>{

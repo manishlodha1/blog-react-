@@ -31,7 +31,7 @@ router.put("/:id",async(req,res)=>{
                 res.status(500).json(err);
             }
         }
-        else{
+        else{ 
             res.status(401).json("You can update only your post !");
         }
     } catch(err){
@@ -97,6 +97,7 @@ router.get("/",async(req,res) => {
         res.status(200).json(posts);  
     }
     catch(err){
+        console.log("error in post fetching line 100: ",err);
         res.status(500).json(err);
     }
 })

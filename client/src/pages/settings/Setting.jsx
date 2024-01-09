@@ -30,14 +30,14 @@ const Setting = () => {
       data.append("file",file);
       updatedUser.profilePic = filename;
       try{
-        await axios.post("/upload",data);
+        await axios.post("https://blog-back-t51z.onrender.com/upload",data);
       }
       catch(err){
           console.log("error line 36 ",err)
       };
     }
     try{
-     const res =  await axios.put("/users/"+user._id,updatedUser);
+     const res =  await axios.put("https://blog-back-t51z.onrender.com/users/"+user._id,updatedUser);
       setSuccess(true);
       dispatch({type: "UPDATE_SUCCESS",payload: res.data})
       }

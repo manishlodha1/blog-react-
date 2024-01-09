@@ -14,18 +14,18 @@ router.post("/register",async(req,res)=>{
             email: req.body.email,
             password: hashedPass,
         });
-
+ 
         const user = await newUser.save();
         res.status(200).json(user);
-        // newUser(); 
+        newUser(); 
     }
     catch(err){
         res.status(500).json(err);
     }
 });
+  
 
-
-
+ 
 router.post("/login", async (req,res) => {
     try{
         const user = await User.findOne({username: req.body.username});
