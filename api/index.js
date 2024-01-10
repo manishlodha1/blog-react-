@@ -24,7 +24,7 @@ app.use("/images",express.static(path.join(__dirname,"/images")))
 
 async function startServer() {
     try {
-      await mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology: true });
+      await mongoose.connect(process.env.MONGO_URL);
       console.log("Connected to MongoDB");
       app.listen(5000, () => {
         console.log("Backend is running");
