@@ -20,7 +20,21 @@ app.use(cors());
 app.use(express.json());
 app.use("/images",express.static(path.join(__dirname,"/images")))
 
-mongoose.connect(process.env.MONGO_URL).then(console.log("Connected to monogodb")).catch((err) => console.log(err));
+// mongoose.connect(process.env.MONGO_URL).then(console.log("Connected to monogodb")).catch((err) => console.log(err));
+
+async function startServer() {
+    try {
+      await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+      console.log("Connected to MongoDB");
+      app.listen(5000, () => {
+        console.log("Backend is running");
+      });
+    } catch (error) {
+      console.error("MongoDB connection error:", error);
+    }
+  }
+  
+  startServer();
 
 const storage = multer.diskStorage({
     destination: (req,file,cb)=>{
