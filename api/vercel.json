@@ -6,7 +6,7 @@
         {"src": "/api/users/(.*)", "dest": "./index.js"},
         {"src": "/api/posts/(.*)", "dest": "./index.js"},
         {"src": "/api/upload", "dest": "./index.js"},
-        {"src": "/images/(.*)", "dest": "./index.js"},
+        {"src": "/images/(.*)", "dest": "./index.js"}, 
         {"src": "/api/categories/(.*)", "dest": "./index.js"}
         
     ]
